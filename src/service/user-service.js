@@ -125,7 +125,31 @@ const update = async (request) => {
     })
 }
 
+const logout = async (username) => {
+    username = validate(getUserValidation, username);
 
+    const user = await prismaClient.user.findUnique({
+        where: {
+            username: username
+        }
+    });
+
+    if(!user) {
+        throw new ResponseError(404, "user is not fund");
+    }
+
+    return prismaClient.user.update({
+        where: {
+            username: username
+        },
+        data: {
+            token: null
+        },
+        select: {
+            username : true
+        }
+    })
+}
 
 
 
@@ -135,6 +159,7 @@ export default {
     register,
     login,
     get,
-    update
+    update,
+    logout
 
 }
