@@ -66,5 +66,5 @@ export default {
     login,
     get,
     update,
-    logout
+    logout,
 }
