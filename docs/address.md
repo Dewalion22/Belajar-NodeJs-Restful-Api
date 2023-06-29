@@ -47,8 +47,6 @@ Response Body Error :
 Endpoint : PUT /api/contacts/:contactId/addresses/:addressId
 
 
-
-
 Headers :
 - Authorization : token
 
